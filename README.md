@@ -25,3 +25,13 @@ FFXIV-Send-KeyPress
             PostMessage(editx, WM_KEYUP, (int)key, 0);
         }
     }
+
+
+
+How To
+======
+
+    private void button1_Click(object sender, EventArgs e)
+    {   
+        Send.KeyPress(Keys.W, 10000);
+    }
