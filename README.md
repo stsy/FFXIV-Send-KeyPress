@@ -5,7 +5,7 @@ FFXIV-Send-KeyPress
     {
         #region Imports
         [DllImport("user32.dll")]
-        static extern bool PostMessage(IntPtr hWnd, uint Msg, int wParam, int lParam);
+        static extern bool PostMessage(IntPtr hWnd, uint Msg, int wParam, uint lParam);
         [DllImport("user32.dll", SetLastError = true)]
         static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
         [DllImport("user32.dll", SetLastError = true)]
@@ -20,9 +20,9 @@ FFXIV-Send-KeyPress
             IntPtr ffxiv = FindWindow("ffxiv", null);
             IntPtr editx = FindWindowEx(ffxiv, IntPtr.Zero, "FFXIVGAME", null);
 
-            PostMessage(editx, WM_KEYDOWN, (int)key, 0);
+            PostMessage(editx, WM_KEYDOWN, (int)key, 0x001F0001);
             Thread.Sleep(sleep);
-            PostMessage(editx, WM_KEYUP, (int)key, 0);
+            PostMessage(editx, WM_KEYUP, (int)key, 0xC01F0001);
         }
     }
 
